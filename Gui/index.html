@@ -3,173 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troca de Livros Sustentável</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Curiosidades</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1><i class="fas fa-book-open"></i> Troca de Livros Comunitária</h1>
-            <nav>
-                <button id="home-btn"><i class="fas fa-home"></i> Início</button>
-                <button id="catalog-btn"><i class="fas fa-list"></i> Catálogo</button>
-                <button id="profile-btn"><i class="fas fa-user"></i> Perfil</button>
-                <button id="dashboard-btn"><i class="fas fa-chart-line"></i> Dashboard</button>
-                <button id="about-btn"><i class="fas fa-info-circle"></i> Sobre</button>
-            </nav>
-            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
-        </div>
+        <h1>Curiosidades</h1>
+        <p>Descubra fatos incríveis e desconhecidos sobre o mundo!</p>
+        <input type="text" id="search-bar" placeholder="Pesquise por curiosidades...">
+        <button id="random-fact-btn">Gerar Fato Aleatório</button>
     </header>
 
-    <aside id="sidebar" class="sidebar">
-        <h3><i class="fas fa-filter"></i> Filtros Rápidos</h3>
-        <select id="quick-genre">
-            <option value="">Gênero</option>
-            <option value="ficcao">Ficção</option>
-            <option value="nao-ficcao">Não-Ficção</option>
-            <option value="infantil">Infantil</option>
-        </select>
-        <input type="text" id="quick-location" placeholder="Localização">
-        <select id="quick-condition">
-            <option value="">Condição</option>
-            <option value="novo">Novo</option>
-            <option value="bom">Bom</option>
-            <option value="usado">Usado</option>
-        </select>
-        <button id="apply-filters"><i class="fas fa-search"></i> Aplicar</button>
-    </aside>
-
-    <main id="main-content">
-        <!-- Página Inicial -->
-        <section id="home" class="page active">
-            <div class="hero">
-                <h2>Promovendo Leitura Sustentável</h2>
-                <p>Conecte-se com pessoas da sua região para trocar livros usados. Reduza o consumo de papel e construa uma comunidade de leitores! <i class="fas fa-leaf"></i></p>
-                <button id="join-btn" class="cta-btn">Junte-se Agora</button>
-            </div>
-            <div class="stats">
-                <div class="stat"><i class="fas fa-users"></i> <span id="user-count">0</span> Usuários</div>
-                <div class="stat"><i class="fas fa-book"></i> <span id="book-count">0</span> Livros</div>
-                <div class="stat"><i class="fas fa-exchange-alt"></i> <span id="trade-count">0</span> Trocas</div>
-            </div>
+    <main id="facts-container">
+        <section class="fact" data-id="1">
+            <h2>O Universo Está Expandindo Mais Rápido</h2>
+            <p>Cientistas descobriram que o universo está se expandindo a uma taxa acelerada, desafiando as leis da física conhecidas.</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_halo%29.jpg/400px-Andromeda_Galaxy_%28with_halo%29.jpg" alt="Imagem da Galáxia de Andrômeda">
         </section>
 
-        <!-- Catálogo de Livros -->
-        <section id="catalog" class="page">
-            <h2><i class="fas fa-th"></i> Catálogo de Livros</h2>
-            <div class="filters">
-                <select id="genre-filter">
-                    <option value="">Todos os Gêneros</option>
-                    <option value="ficcao">Ficção</option>
-                    <option value="nao-ficcao">Não-Ficção</option>
-                    <option value="infantil">Infantil</option>
-                </select>
-                <input type="text" id="location-filter" placeholder="Localização">
-                <select id="condition-filter">
-                    <option value="">Condição</option>
-                    <option value="novo">Novo</option>
-                    <option value="bom">Bom</option>
-                    <option value="usado">Usado</option>
-                </select>
-                <input type="date" id="date-filter" placeholder="Data de adição">
-            </div>
-            <div id="book-list" class="book-grid"></div>
+        <section class="fact" data-id="2">
+            <h2>O Cérebro Humano É Mais Ativo Durante o Sono</h2>
+            <p>Durante o sono REM, o cérebro consome mais oxigênio do que quando estamos acordados, processando memórias e emoções.</p>
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um cérebro humano">
         </section>
 
-        <!-- Perfil do Usuário -->
-        <section id="profile" class="page">
-            <h2><i class="fas fa-user-circle"></i> Seu Perfil</h2>
-            <div id="user-info" class="user-card">
-                <p><i class="fas fa-user"></i> Nome: <span id="user-name">Não logado</span></p>
-                <p><i class="fas fa-map-marker-alt"></i> Localização: <span id="user-location">Não definida</span></p>
-                <p><i class="fas fa-star"></i> Avaliação: <span id="user-rating">0</span>/5</p>
-            </div>
-            <button id="add-book-btn" class="cta-btn"><i class="fas fa-plus"></i> Adicionar Livro</button>
-            <button id="messages-btn" class="cta-btn"><i class="fas fa-envelope"></i> Mensagens</button>
-            <h3><i class="fas fa-book"></i> Seus Livros</h3>
-            <div id="user-books" class="book-grid"></div>
-            <h3><i class="fas fa-exchange-alt"></i> Trocas Pendentes</h3>
-            <div id="trades" class="trade-list"></div>
+        <section class="fact" data-id="3">
+            <h2>Existem Mais Estrelas no Universo do que Grãos de Areia na Terra</h2>
+            <p>Estima-se que há cerca de 2 trilhões de galáxias, cada uma com bilhões de estrelas – mais do que grãos de areia em todas as praias do planeta.</p>
+            <img src="https://images.unsplash.com/photo-1446776877081-d282a0f896e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de estrelas no céu noturno">
         </section>
 
-        <!-- Dashboard -->
-        <section id="dashboard" class="page">
-            <h2><i class="fas fa-chart-bar"></i> Dashboard</h2>
-            <div class="dashboard-grid">
-                <div class="metric"><h4>Livros Adicionados</h4><span id="dash-books">0</span></div>
-                <div class="metric"><h4>Trocas Realizadas</h4><span id="dash-trades">0</span></div>
-                <div class="metric"><h4>Mensagens Enviadas</h4><span id="dash-messages">0</span></div>
-                <div class="metric"><h4>Avaliações Recebidas</h4><span id="dash-ratings">0</span></div>
-            </div>
-            <canvas id="chart" width="400" height="200"></canvas> <!-- Placeholder para gráfico (Chart.js pode ser adicionado) -->
+        <section class="fact" data-id="4">
+            <h2>O DNA Humano É 99,9% Igual ao de um Chimpanzé</h2>
+            <p>A diferença genética entre humanos e chimpanzés é de apenas 1,2%, o que explica nossa semelhança evolutiva.</p>
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um chimpanzé">
         </section>
 
-        <!-- Sobre -->
-        <section id="about" class="page">
-            <h2><i class="fas fa-info"></i> Sobre o Projeto</h2>
-            <p>Este site visa promover a sustentabilidade através da troca de livros, reduzindo desperdício e conectando comunidades. Desenvolvido para tarefas escolares, combina design responsivo e interatividade.</p>
-            <p>Contato: <a href="mailto:contato@trocalivros.com">contato@trocalivros.com</a></p>
+        <section class="fact" data-id="5">
+            <h2>A Água Pode Existir em Três Estados ao Mesmo Tempo</h2>
+            <p>No "ponto triplo" da água (0,01°C e pressão específica), ela pode ser sólida, líquida e gasosa simultaneamente.</p>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de água em diferentes estados">
+        </section>
+
+        <section class="fact" data-id="6">
+            <h2>O Som Não Viaja no Espaço</h2>
+            <p>No vácuo do espaço, não há moléculas para transmitir ondas sonoras, então o espaço é completamente silencioso.</p>
+            <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem do espaço sideral">
+        </section>
+
+        <section class="fact" data-id="7">
+            <h2>Os Golfinhos Dormem com Um Olho Aberto</h2>
+            <p>Golfinhos dormem com metade do cérebro ativo e um olho aberto para vigiar predadores.</p>
+            <img src="https://images.unsplash.com/photo-1570481662006-a3a1374699e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um golfinho">
+        </section>
+
+        <section class="fact" data-id="8">
+            <h2>A Terra É Mais Antiga do que a Lua</h2>
+            <p>A Terra tem cerca de 4,5 bilhões de anos, enquanto a Lua tem 4,4 bilhões – formada por um impacto gigante.</p>
+            <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem da Terra e Lua">
+        </section>
+
+        <section class="fact" data-id="9">
+            <h2>Os Humanos Compartilham 50% do DNA com Bananas</h2>
+            <p>Isso acontece porque todos os seres vivos compartilham ancestrais comuns na evolução.</p>
+            <img src="https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de bananas">
+        </section>
+
+        <section class="fact" data-id="10">
+            <h2>O Relâmpago Pode Aquecer o Ar a 30.000°C</h2>
+            <p>Isso é mais quente do que a superfície do Sol, causando a expansão rápida do ar que produz o trovão.</p>
+            <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um relâmpago">
+        </section>
+
+        <section class="fact" data-id="11">
+            <h2>O Coração de um Camarão Está na Cabeça</h2>
+            <p>O coração do camarão fica localizado na cabeça, logo atrás dos olhos, permitindo bombeio rápido para nadar.</p>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um camarão">
+        </section>
+
+        <section class="fact" data-id="12">
+            <h2>Os Elefantes Nunca Esquecem</h2>
+            <p>Elefantes têm memória excepcional e podem reconhecer outros elefantes ou humanos anos depois.</p>
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um elefante">
+        </section>
+
+        <section class="fact" data-id="13">
+            <h2>O Panda Come Bambu o Dia Todo</h2>
+            <p>Um panda gigante adulto pode comer até 40 kg de bambu por dia, gastando 12 horas mastigando.</p>
+            <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um panda">
+        </section>
+
+        <section class="fact" data-id="14">
+            <h2>O Camaleão Muda de Cor por Emoções</h2>
+            <p>Além de camuflagem, camaleões mudam de cor devido a temperatura, luz, estresse ou excitação.</p>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem de um camaleão">
+        </section>
+
+        <section class="fact" data-id="15">
+            <h2>A Luz do Sol Demora 8 Minutos para Chegar à Terra</h2>
+            <p>A luz viaja a 300.000 km/s, então leva cerca de 8 minutos para percorrer 150 milhões de km da Terra ao Sol.</p>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Imagem do Sol">
         </section>
     </main>
 
-    <!-- Modal para Adicionar Livro -->
-    <div id="add-book-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-plus-circle"></i> Adicionar Novo Livro</h3>
-            <form id="add-book-form">
-                <input type="text" id="book-title" placeholder="Título" required>
-                <input type="text" id="book-author" placeholder="Autor" required>
-                <select id="book-genre" required>
-                    <option value="">Gênero</option>
-                    <option value="ficcao">Ficção</option>
-                    <option value="nao-ficcao">Não-Ficção</option>
-                    <option value="infantil">Infantil</option>
-                </select>
-                <input type="text" id="book-location" placeholder="Localização" required>
-                <select id="book-condition" required>
-                    <option value="">Condição</option>
-                    <option value="novo">Novo</option>
-                    <option value="bom">Bom</option>
-                    <option value="usado">Usado</option>
-                </select>
-                <input type="date" id="book-date" required>
-                <textarea id="book-description" placeholder="Descrição"></textarea>
-                <button type="submit"><i class="fas fa-save"></i> Adicionar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal para Login/Cadastro -->
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-sign-in-alt"></i> Entrar ou Cadastrar</h3>
-            <form id="auth-form">
-                <input type="text" id="auth-name" placeholder="Nome" required>
-                <input type="text" id="auth-location" placeholder="Localização" required>
-                <button type="submit"><i class="fas fa-check"></i> Entrar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal para Mensagens -->
-    <div id="messages-modal" class="modal">
-        <div class="modal-content large">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-envelope"></i> Mensagens</h3>
-            <div id="messages-list"></div>
-            <form id="send-message-form">
-                <input type="text" id="message-recipient" placeholder="Destinatário" required>
-                <textarea id="message-text" placeholder="Mensagem" required></textarea>
-                <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
-            </form>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2023 Troca de Livros Sustentável. <i class="fas fa-heart"></i> Feito para promover a leitura!</p>
+        <p>Inspirado em sites de fatos desconhecidos. Imagens de fontes públicas como Unsplash e Wikimedia.</p>
     </footer>
 
     <script src="script.js"></script>
