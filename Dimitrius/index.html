@@ -3,175 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troca de Livros Sustentável</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Catálogo Automotivo Mecânico</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1><i class="fas fa-book-open"></i> Troca de Livros Comunitária</h1>
-            <nav>
-                <button id="home-btn"><i class="fas fa-home"></i> Início</button>
-                <button id="catalog-btn"><i class="fas fa-list"></i> Catálogo</button>
-                <button id="profile-btn"><i class="fas fa-user"></i> Perfil</button>
-                <button id="dashboard-btn"><i class="fas fa-chart-line"></i> Dashboard</button>
-                <button id="about-btn"><i class="fas fa-info-circle"></i> Sobre</button>
-            </nav>
-            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+
+<header>
+    <h1>🔧 Catálogo Automotivo</h1>
+    <p>Peças detalhadas | Avaliações | Reclamações</p>
+</header>
+
+<main>
+
+    <div class="card filtro">
+        <div class="linha">
+            <label>Marca:</label>
+            <select id="marca">
+                <option value="">Selecione</option>
+                <option value="ford">Ford</option>
+                <option value="chevrolet">Chevrolet</option>
+                <option value="fiat">Fiat</option>
+            </select>
         </div>
-    </header>
 
-    <aside id="sidebar" class="sidebar">
-        <h3><i class="fas fa-filter"></i> Filtros Rápidos</h3>
-        <select id="quick-genre">
-            <option value="">Gênero</option>
-            <option value="ficcao">Ficção</option>
-            <option value="nao-ficcao">Não-Ficção</option>
-            <option value="infantil">Infantil</option>
-        </select>
-        <input type="text" id="quick-location" placeholder="Localização">
-        <select id="quick-condition">
-            <option value="">Condição</option>
-            <option value="novo">Novo</option>
-            <option value="bom">Bom</option>
-            <option value="usado">Usado</option>
-        </select>
-        <button id="apply-filters"><i class="fas fa-search"></i> Aplicar</button>
-    </aside>
-
-    <main id="main-content">
-        <!-- Página Inicial -->
-        <section id="home" class="page active">
-            <div class="hero">
-                <h2>Promovendo Leitura Sustentável</h2>
-                <p>Conecte-se com pessoas da sua região para trocar livros usados. Reduza o consumo de papel e construa uma comunidade de leitores! <i class="fas fa-leaf"></i></p>
-                <button id="join-btn" class="cta-btn">Junte-se Agora</button>
-            </div>
-            <div class="stats">
-                <div class="stat"><i class="fas fa-users"></i> <span id="user-count">0</span> Usuários</div>
-                <div class="stat"><i class="fas fa-book"></i> <span id="book-count">0</span> Livros</div>
-                <div class="stat"><i class="fas fa-exchange-alt"></i> <span id="trade-count">0</span> Trocas</div>
-            </div>
-        </section>
-
-        <!-- Catálogo de Livros -->
-        <section id="catalog" class="page">
-            <h2><i class="fas fa-th"></i> Catálogo de Livros</h2>
-            <div class="filters">
-                <select id="genre-filter">
-                    <option value="">Todos os Gêneros</option>
-                    <option value="ficcao">Ficção</option>
-                    <option value="nao-ficcao">Não-Ficção</option>
-                    <option value="infantil">Infantil</option>
-                </select>
-                <input type="text" id="location-filter" placeholder="Localização">
-                <select id="condition-filter">
-                    <option value="">Condição</option>
-                    <option value="novo">Novo</option>
-                    <option value="bom">Bom</option>
-                    <option value="usado">Usado</option>
-                </select>
-                <input type="date" id="date-filter" placeholder="Data de adição">
-            </div>
-            <div id="book-list" class="book-grid"></div>
-        </section>
-
-        <!-- Perfil do Usuário -->
-        <section id="profile" class="page">
-            <h2><i class="fas fa-user-circle"></i> Seu Perfil</h2>
-            <div id="user-info" class="user-card">
-                <p><i class="fas fa-user"></i> Nome: <span id="user-name">Não logado</span></p>
-                <p><i class="fas fa-map-marker-alt"></i> Localização: <span id="user-location">Não definida</span></p>
-                <p><i class="fas fa-star"></i> Avaliação: <span id="user-rating">0</span>/5</p>
-            </div>
-            <button id="add-book-btn" class="cta-btn"><i class="fas fa-plus"></i> Adicionar Livro</button>
-            <button id="messages-btn" class="cta-btn"><i class="fas fa-envelope"></i> Mensagens</button>
-            <h3><i class="fas fa-book"></i> Seus Livros</h3>
-            <div id="user-books" class="book-grid"></div>
-            <h3><i class="fas fa-exchange-alt"></i> Trocas Pendentes</h3>
-            <div id="trades" class="trade-list"></div>
-        </section>
-
-        <!-- Dashboard -->
-        <section id="dashboard" class="page">
-            <h2><i class="fas fa-chart-bar"></i> Dashboard</h2>
-            <div class="dashboard-grid">
-                <div class="metric"><h4>Livros Adicionados</h4><span id="dash-books">0</span></div>
-                <div class="metric"><h4>Trocas Realizadas</h4><span id="dash-trades">0</span></div>
-                <div class="metric"><h4>Mensagens Enviadas</h4><span id="dash-messages">0</span></div>
-                <div class="metric"><h4>Avaliações Recebidas</h4><span id="dash-ratings">0</span></div>
-            </div>
-            <canvas id="chart" width="400" height="200"></canvas> <!-- Placeholder para gráfico (Chart.js pode ser adicionado) -->
-        </section>
-
-        <!-- Sobre -->
-        <section id="about" class="page">
-            <h2><i class="fas fa-info"></i> Sobre o Projeto</h2>
-            <p>Este site visa promover a sustentabilidade através da troca de livros, reduzindo desperdício e conectando comunidades. Desenvolvido para tarefas escolares, combina design responsivo e interatividade.</p>
-            <p>Contato: <a href="mailto:contato@trocalivros.com">contato@trocalivros.com</a></p>
-        </section>
-    </main>
-
-    <!-- Modal para Adicionar Livro -->
-    <div id="add-book-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-plus-circle"></i> Adicionar Novo Livro</h3>
-            <form id="add-book-form">
-                <input type="text" id="book-title" placeholder="Título" required>
-                <input type="text" id="book-author" placeholder="Autor" required>
-                <select id="book-genre" required>
-                    <option value="">Gênero</option>
-                    <option value="ficcao">Ficção</option>
-                    <option value="nao-ficcao">Não-Ficção</option>
-                    <option value="infantil">Infantil</option>
-                </select>
-                <input type="text" id="book-location" placeholder="Localização" required>
-                <select id="book-condition" required>
-                    <option value="">Condição</option>
-                    <option value="novo">Novo</option>
-                    <option value="bom">Bom</option>
-                    <option value="usado">Usado</option>
-                </select>
-                <input type="date" id="book-date" required>
-                <textarea id="book-description" placeholder="Descrição"></textarea>
-                <button type="submit"><i class="fas fa-save"></i> Adicionar</button>
-            </form>
+        <div class="linha">
+            <label>Modelo:</label>
+            <select id="modelo">
+                <option value="">Selecione a marca antes</option>
+            </select>
         </div>
+
+        <button id="buscar">Buscar Peças</button>
     </div>
 
-    <!-- Modal para Login/Cadastro -->
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-sign-in-alt"></i> Entrar ou Cadastrar</h3>
-            <form id="auth-form">
-                <input type="text" id="auth-name" placeholder="Nome" required>
-                <input type="text" id="auth-location" placeholder="Localização" required>
-                <button type="submit"><i class="fas fa-check"></i> Entrar</button>
-            </form>
-        </div>
-    </div>
+    <h2 class="titulo">Peças do carro selecionado</h2>
+    <div id="resultado" class="grid"></div>
 
-    <!-- Modal para Mensagens -->
-    <div id="messages-modal" class="modal">
-        <div class="modal-content large">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-envelope"></i> Mensagens</h3>
-            <div id="messages-list"></div>
-            <form id="send-message-form">
-                <input type="text" id="message-recipient" placeholder="Destinatário" required>
-                <textarea id="message-text" placeholder="Mensagem" required></textarea>
-                <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
-            </form>
-        </div>
-    </div>
+</main>
 
-    <footer>
-        <p>&copy; 2023 Troca de Livros Sustentável. <i class="fas fa-heart"></i> Feito para promover a leitura!</p>
-    </footer>
+<footer>
+    <p>Design Mecânico – Powered by IA</p>
+</footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
